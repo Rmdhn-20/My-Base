@@ -916,7 +916,7 @@ case 'estetik':
     inu = await getBuffer(`https://api.zeks.me/api/estetikpic?apikey=${ZeksApi}`)
     but = [
         { buttonId: `${prefix}owner`, buttonText: { displayText: '☰ OWNER' }, type: 1 },
-        { buttonId: `${prefix}estetik`, buttonText: { displayText: '☰ NEXT' }, type: 1 },
+        { buttonId: `${prefix}estetik`, buttonText: { displayText: '☰ NEXT' }, type: 1 }
     ]
     sendButImage(from, 'Nih estetek nya', faketeks, inu, but)
     break
@@ -941,7 +941,7 @@ case 'estetik':
 	    break
 		
 	case 'darkjoke':
-	case 'darkjokes:
+	case 'darkjokes':
 		getb = await getBuffer('https://api.dapuhy.ga/api/randomimage/darkjokes?apikey=eka')
 		but = [
 			{ buttonId: `${prefix}owner`, buttonText: { displayText: '☰ OWNER' }, type: 1 },
