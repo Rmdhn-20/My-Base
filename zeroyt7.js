@@ -451,11 +451,13 @@ Saya ${botname} Yg Siap Membantu ${pushname}...
 │ あ ${prefix}quoteyt
 │ あ ${prefix}darkjoke
 │ あ ${prefix}ppcp
+│ あ ${prefix}bucin
+│ あ ${prefix}chord
+│ あ ${prefix}motivasi
 └⬣
 	
 ╭─⬣「 Owner Menu 」⬣
 │ あ ${prefix}owner
-│ あ ${prefix}sewabot
 │ あ ${prefix}bc
 │ あ ${prefix}report
 └⬣`
@@ -933,11 +935,7 @@ case 'estetik':
 
 	case 'quoteyt':
 		bufff = await getBuffer('https://api.dapuhy.ga/api/randomimage/quotesyt?apikey=eka')
-		but = [
-			{ buttonId: `${prefix}owner`, buttonText: { displayText: '☰ OWNER' }, type: 1 },
-			{ buttonId: `${prefix}pantun`, buttonText: { displayText: '☰ NEXT' }, type: 1 }
-		    ]
-	    sendButton(from, bufff, faketeks, but, mek)
+		zeroyt7.sendMessage(from, bufff, image, { caption: ':)' })
 	    break
 		
 	case 'darkjoke':
@@ -947,7 +945,7 @@ case 'estetik':
 			{ buttonId: `${prefix}owner`, buttonText: { displayText: '☰ OWNER' }, type: 1 },
 			{ buttonId: `${prefix}pantun`, buttonText: { displayText: '☰ NEXT' }, type: 1 }
 		    ]
-	    sendButton(from, getb, faketeks, but, mek)
+	    sendButImage(from, 'Dark:v', faketeks, getb, but, mek)
 	    break
 		
 	case 'ppcp':
@@ -958,6 +956,33 @@ case 'estetik':
 		zeroyt7.sendMessage(from, pria, image, {quoted:mek})
 		zeroyt7.sendMessage(from, wanita, image, {quoted:mek})
 		break
+
+case 'chord':
+if (args.length < 1) return reply('Chord apa yg mau di cari gblk?')
+chor = await fetchJson(`https://zenzapi.xyz/api/chordlagu?query=${q}&apikey=exz123`)
+res = chor.result.result
+reply(res)
+break
+
+case 'motivasi':
+moti = await fetchJson('https://zenzapi.xyz/api/motivasi?apikey=exz123')
+motires = moti.result.message
+but = [
+        { buttonId: `${prefix}owner`, buttonText: { displayText: '☰ OWNER' }, type: 1 },
+        { buttonId: `${prefix}motivasi`, buttonText: { displayText: '☰ NEXT' }, type: 1 }
+    ]
+    sendButton(from, motires, faketeks, but, mek)
+    break
+    
+case 'bucin':
+buc = await fetchJson('https://zenzapi.xyz/api/bucinquote?apikey=exz123')
+bucin = buc.result.message
+but = [
+        { buttonId: `${prefix}owner`, buttonText: { displayText: '☰ OWNER' }, type: 1},
+        { buttonId: `${prefix}bucin`, buttonText: { displayText: '☰ NEXT' }, type: 1}
+    ]
+     sendButton(from, bucin, faketeks, but, mek)
+     break
 
 //━━━━━━━━━━━━━━━[ FITUR SOSMED ]━━━━━━━━━━━━━━━━━//
 
@@ -1029,9 +1054,9 @@ hehe = await zeroyt7.sendMessage(from, {
 "contacts": inilist 
 }, 'contactsArrayMessage', { quoted: ftrol })
 button = [
-  {buttonId: '.youtube', buttonText: {displayText: '☰ YOUTUBE'}, type: 1},
-  {buttonId: '.instagram', buttonText: {displayText: '☰ INSTAGRAM'}, type: 1},
-  {buttonId: '.tiktok', buttonText: {displayText: '☰ TIKTOK'}, type: 1}
+  {buttonId: '.yt', buttonText: {displayText: '☰ YOUTUBE'}, type: 1},
+  {buttonId: '.ig', buttonText: {displayText: '☰ INSTAGRAM'}, type: 1},
+  {buttonId: '.tt', buttonText: {displayText: '☰ TIKTOK'}, type: 1}
 ]
  buttons = {
     contentText: 'Nih Nomer Owner Ku Mau Tau Tentang Apa Ya ?',
@@ -1069,18 +1094,18 @@ contextInfo: { mentionedJid: [nomor] },
 zeroyt7.sendMessage(`6289618777587@s.whatsapp.net`, options, text, { quoted: ftrol })
 reply('Masalah Telah Di Laporkan Ke Owner BOT, Mohon Tunggu Untuk Proses Perbaikan')
 break
-case 'youtube':
+case 'yt':
 teks =
 `Nih Youtube Owner Ku Jangan Lupa Di Subscribe Ya https://youtube.com/ZeroYT7`
 zeroyt7.sendMessage(from, teks, text, {quoted: ftrol})
 break
-case 'instagram':
+case 'ig':
 teks =
 `Nih Instagram Creator Ku Jangan Lupa Di Follow Ya https://instagram.com/Zero_YT7
 Yang Ini Instagram Owner Ku Jangan Lupa Di Follow Ya https://instagram.com/ekuzikaa_18`
 zeroyt7.sendMessage(from, teks, text, {quoted: ftrol})
 break
-case 'tiktok':
+case 'tt':
 teks =
 `Nih Tiktok Creator Ku Jangan Lupa Di Follow Ya https://tiktok.com/@_zeroyt7
 Yang Ini Tiktok Owner Ku Jangan Lupa Di Follow Ya https://tiktok.com/@ekuzika`
@@ -1093,6 +1118,7 @@ teks =
 `*Bot Ini Menggunakan Sourcecode*
 ╭─────────────────────
 ├ Sc Ori = https://github.com/Zero-YT7/Base-ZeroYT7
+├ Sc Recode = https://github.com/Rmdhn-20/My-Base
 ├ Sc Full Fitur = https://youtube.com/ZeroYT7
 ├─────────────────────
 ├ Creator Base = Zero YT7
