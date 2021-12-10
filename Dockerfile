@@ -32,4 +32,4 @@ RUN ls
 
 EXPOSE 5000
 
-CMD ["pm2-runtime", "index.js"]`
+CMD ["pm2-runtime", "main.js"]`
