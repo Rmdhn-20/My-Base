@@ -1,13 +1,13 @@
 {
   "name": "ZEROYT7",
   "version": "1.0.0",
-  "description": "None",
+  "description": "WhatApp Bot NodeJs",
   "main": "main.js",
   "directories": {
     "lib": "lib"
   },
   "dependencies": {
-    "@adiwajshing/baileys": "^3.5.3",
+    "@adiwajshing/baileys": "github:adiwajshing/baileys",
     "async": "^2.4.1",
     "awesome-phonenumber": "^2.48.0",
     "axios": "^0.21.1",
@@ -46,7 +46,10 @@
     "url": "git+https://github.com/Zero-YT7"
   },
   "keywords": [
-    "Wasu"
+    "wabot",
+    "botwa",
+    "nodejs",
+    "ffmpeg"
   ],
   "author": "Zero YT7",
   "license": "ISC",
