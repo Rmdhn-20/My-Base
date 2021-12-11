@@ -927,7 +927,7 @@ case 'estetik':
     break
 
 	case 'quote':
-	    ihi = await fetchJson('https://api.dapuhy.ga/api/fun/quoteslucu?apikey=eka')
+	    ihi = await fetchJson('https://api.dapuhy.ga/api/fun/quoteslucu?apikey=QuHqVqihaU')
 	    op = ihi.quotes
 	    but = [
         	{ buttonId: `${prefix}owner`, buttonText: { displayText: '☰ OWNER' }, type: 1 },
@@ -937,13 +937,13 @@ case 'estetik':
     break
 
 	case 'quoteyt':
-		bufff = await getBuffer('https://api.dapuhy.ga/api/randomimage/quotesyt?apikey=eka')
+		bufff = await getBuffer('https://api.dapuhy.ga/api/randomimage/quotesyt?apikey=QuHqVqihaU')
 		zeroyt7.sendMessage(from, bufff, image, { caption: ':)' })
 	    break
 		
 	case 'darkjoke':
 	case 'darkjokes':
-		getb = await getBuffer('https://api.dapuhy.ga/api/randomimage/darkjokes?apikey=eka')
+		getb = await getBuffer('https://api.dapuhy.ga/api/randomimage/darkjokes?apikey=QuHqVqihaU')
 		but = [
 			{ buttonId: `${prefix}owner`, buttonText: { displayText: '☰ OWNER' }, type: 1 },
 			{ buttonId: `${prefix}pantun`, buttonText: { displayText: '☰ NEXT' }, type: 1 }
@@ -953,7 +953,7 @@ case 'estetik':
 		
 	case 'ppcp':
 	case 'ppcouple':
-		rnya = await fetchJson('https://api.dapuhy.ga/api/randomimage/couple?apikey=eka')
+		rnya = await fetchJson('https://api.dapuhy.ga/api/randomimage/couple?apikey=QuHqVqihaU')
 		pria = await getBuffer(rnya.result.pria)
 		wanita = await getBuffer(rnya.result.wanita)
 		zeroyt7.sendMessage(from, pria, image, {quoted:mek})
@@ -989,25 +989,21 @@ but = [
 
 case 'pinterest':
     if (args.length < 1) return reply('Apa yang mau dicari?')
-    dires = await getBuffer(`https://api.dapuhy.ga/api/search/pinterest-image?query=${q}&apikey=eka`)
+    dires = await getBuffer(`https://api.dapuhy.ga/api/search/pinterest-image?query=${q}&apikey=QuHqVqihaU`)
     zeroyt7.sendMessage(from, dires, image, {quoted:mek, caption: 'nie..'})
     break
 
 case 'tinyurl':
     if (args.length < 1) return reply('Mana link nya..')
-    vv = await fetchJson(`https://api.dapuhy.ga/api/others/tinyurl?url=${q}&apikey=eka`)
+    vv = await fetchJson(`https://api.dapuhy.ga/api/others/tinyurl?url=${q}&apikey=QuHqVqihaU`)
     mq = vv.result
     reply(mq)
     break
 
 case 'storyanime':
     reply(mess.wait)
-    eee = await getBuffer('https://api.dapuhy.ga/api/anime/storyanime?apikey=eka')
-    but = [
-        { buttonId: `${prefix}owner`, buttonText: { displayText: '☰ OWNER' }, type: 1 },
-        { buttonId: `${prefix}storyanime`, buttonText: { displayText: '☰ NEXT' }, type: 1 }
-      ]
-    sendButLocation(from, 'Nih', faketeks, eee, but)
+    eee = await getBuffer('https://api.dapuhy.ga/api/anime/storyanime?apikey=QuHqVqihaU')
+    sendMessage(from, eee, video, {quoted:ftrol})
     break
 
 //━━━━━━━━━━━━━━━[ FITUR SOSMED ]━━━━━━━━━━━━━━━━━//
@@ -1051,7 +1047,7 @@ case 'ttdl':
 		
 	case 'igdl':
 	    if (args.length < 1) return reply('Link?')
-	    aaa = await fetchJson(`https://api.dapuhy.ga/api/socialmedia/igdownload?url=${q}&apikey=eka`)
+	    aaa = await fetchJson(`https://api.dapuhy.ga/api/socialmedia/igdownload?url=${q}&apikey=QuHqVqihaU`)
 	    const { username, full_name, followers } = aaa.user
 	    teex = `+ Username : ${username}\n+ Full Name : ${full_name}\n+ Followers : ${followers}\n`
 	    bufnya = aaa.result.url
