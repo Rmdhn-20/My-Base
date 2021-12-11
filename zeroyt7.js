@@ -62,6 +62,7 @@ botname = setting.BotName
 zerokey = setting.ZeroKey
 ZeksApi = setting.zeksKey
 ownername = setting.OwnerName
+DapKey = setting.DapKey
 
 //━━━━━━━━━━━━━━━[ MODUL EXPORTS ]━━━━━━━━━━━━━━━━━//
 
@@ -927,7 +928,7 @@ case 'estetik':
     break
 
 	case 'quote':
-	    ihi = await fetchJson('https://api.dapuhy.ga/api/fun/quoteslucu?apikey=QuHqVqihaU')
+	    ihi = await fetchJson(`https://api.dapuhy.ga/api/fun/quoteslucu?apikey=${DapKey}`)
 	    op = ihi.quotes
 	    but = [
         	{ buttonId: `${prefix}owner`, buttonText: { displayText: '☰ OWNER' }, type: 1 },
@@ -937,13 +938,13 @@ case 'estetik':
     break
 
 	case 'quoteyt':
-		bufff = await getBuffer('https://api.dapuhy.ga/api/randomimage/quotesyt?apikey=QuHqVqihaU')
+		bufff = await getBuffer(`https://api.dapuhy.ga/api/randomimage/quotesyt?apikey=${DapKey}`)
 		zeroyt7.sendMessage(from, bufff, image, { caption: ':)' })
 	    break
 		
 	case 'darkjoke':
 	case 'darkjokes':
-		getb = await getBuffer('https://api.dapuhy.ga/api/randomimage/darkjokes?apikey=QuHqVqihaU')
+		getb = await getBuffer(`https://api.dapuhy.ga/api/randomimage/darkjokes?apikey=${DapKey}`)
 		but = [
 			{ buttonId: `${prefix}owner`, buttonText: { displayText: '☰ OWNER' }, type: 1 },
 			{ buttonId: `${prefix}pantun`, buttonText: { displayText: '☰ NEXT' }, type: 1 }
@@ -953,7 +954,7 @@ case 'estetik':
 		
 	case 'ppcp':
 	case 'ppcouple':
-		rnya = await fetchJson('https://api.dapuhy.ga/api/randomimage/couple?apikey=QuHqVqihaU')
+		rnya = await fetchJson(`https://api.dapuhy.ga/api/randomimage/couple?apikey=${DapKey}`)
 		pria = await getBuffer(rnya.result.pria)
 		wanita = await getBuffer(rnya.result.wanita)
 		zeroyt7.sendMessage(from, pria, image, {quoted:mek})
@@ -989,21 +990,21 @@ but = [
 
 case 'pinterest':
     if (args.length < 1) return reply('Apa yang mau dicari?')
-    dires = await getBuffer(`https://api.dapuhy.ga/api/search/pinterest-image?query=${q}&apikey=QuHqVqihaU`)
+    dires = await getBuffer(`https://api.dapuhy.ga/api/search/pinterest-image?query=${q}&apikey=${DapKey}`)
     zeroyt7.sendMessage(from, dires, image, {quoted:mek, caption: 'nie..'})
     break
 
 case 'tinyurl':
     if (args.length < 1) return reply('Mana link nya..')
-    vv = await fetchJson(`https://api.dapuhy.ga/api/others/tinyurl?url=${q}&apikey=QuHqVqihaU`)
+    vv = await fetchJson(`https://api.dapuhy.ga/api/others/tinyurl?url=${q}&apikey=${DapKey}`)
     mq = vv.result
     reply(mq)
     break
 
 case 'storyanime':
     reply(mess.wait)
-    eee = await getBuffer('https://api.dapuhy.ga/api/anime/storyanime?apikey=QuHqVqihaU')
-    sendMessage(from, eee, video, {quoted:ftrol})
+    eee = await getBuffer(`https://api.dapuhy.ga/api/anime/storyanime?apikey=${DapKey}`)
+    zeroyt7.sendMessage(from, eee, video, {quoted:ftrol})
     break
 
 //━━━━━━━━━━━━━━━[ FITUR SOSMED ]━━━━━━━━━━━━━━━━━//
@@ -1047,7 +1048,7 @@ case 'ttdl':
 		
 	case 'igdl':
 	    if (args.length < 1) return reply('Link?')
-	    aaa = await fetchJson(`https://api.dapuhy.ga/api/socialmedia/igdownload?url=${q}&apikey=QuHqVqihaU`)
+	    aaa = await fetchJson(`https://api.dapuhy.ga/api/socialmedia/igdownload?url=${q}&apikey=${DapKey}`)
 	    const { username, full_name, followers } = aaa.user
 	    teex = `+ Username : ${username}\n+ Full Name : ${full_name}\n+ Followers : ${followers}\n`
 	    bufnya = aaa.result.url
