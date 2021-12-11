@@ -42,9 +42,11 @@
 
 ## ```SETTING```
 
-- Owner number [Here](https://github.com/Rmdhn-20/My-Base/blob/master/setting.json#L4)
-- Owner name [Here](https://github.com/Rmdhn-20/My-Base/blob/master/setting.json#L13)
-- Botname [Here](https://github.com/Rmdhn-20/My-Base/blob/master/setting.json#L14)
+- Owner number [Here](https://github.com/Rmdhn-20/My-Base/blob/master/setting.json#L3)
+- Owner name [Here](https://github.com/Rmdhn-20/My-Base/blob/master/setting.json#L2)
+- Botname [Here](https://github.com/Rmdhn-20/My-Base/blob/master/setting.json#L4)
+- You can register and get Apikey ZeksApi [Here](https://api.zeks.me)
+- You can register and get Apikey Dappuhy [Here](https://api.dapuhy.ga)
 
  ## ```Ganti Session nya```
  - [`Disini`](https://github.com/Rmdhn-20/My-Base/blob/master/zeroyt7.json)
