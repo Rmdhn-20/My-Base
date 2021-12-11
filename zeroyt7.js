@@ -454,6 +454,9 @@ Saya ${botname} Yg Siap Membantu ${pushname}...
 │ あ ${prefix}bucin
 │ あ ${prefix}chord
 │ あ ${prefix}motivasi
+│ あ ${prefix}tinyurl
+│ あ ${prefix}pinterest
+│ あ ${prefix}storyanime
 └⬣
 	
 ╭─⬣「 Owner Menu 」⬣
@@ -983,6 +986,29 @@ but = [
     ]
      sendButton(from, bucin, faketeks, but, mek)
      break
+
+case 'pinterest':
+    if (args.length < 1) return reply('Apa yang mau dicari?')
+    dires = await getBuffer(`https://api.dapuhy.ga/api/search/pinterest-image?query=${q}&apikey=eka`)
+    zeroyt7.sendMessage(from, dires, image, {quoted:mek, caption: 'nie..'})
+    break
+
+case 'tinyurl':
+    if (args.length < 1) return reply('Mana link nya..')
+    vv = await fetchJson(`https://api.dapuhy.ga/api/others/tinyurl?url=${q}&apikey=eka`)
+    mq = vv.result
+    reply(mq)
+    break
+
+case 'storyanime':
+    reply(mess.wait)
+    eee = await getBuffer('https://api.dapuhy.ga/api/anime/storyanime?apikey=eka')
+    but = [
+        { buttonId: `${prefix}owner`, buttonText: { displayText: '☰ OWNER' }, type: 1 },
+        { buttonId: `${prefix}storyanime`, buttonText: { displayText: '☰ NEXT' }, type: 1 }
+      ]
+    sendButLocation(from, 'Nih', faketeks, eee, but)
+    break
 
 //━━━━━━━━━━━━━━━[ FITUR SOSMED ]━━━━━━━━━━━━━━━━━//
 
