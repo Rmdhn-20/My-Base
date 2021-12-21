@@ -466,7 +466,7 @@ Saya ${botname} Yg Siap Membantu ${pushname}...
 │ あ ${prefix}report
 └⬣`
 teks =
-`Ini Base Buatan Zero YT7 dan di Recode oleh EkuziQ :)\nMaaf Fitur nya Baru Sedikit`
+`WhatsApp : wa.me/6289618777587\nGithub : github.com/Rmdhn-20\nIG : instagram.com/ekuzikaa_18`
 but = [
           { buttonId: `${prefix}infobot`, buttonText: { displayText: '☰ INFO' }, type: 1 },
           { buttonId: `${prefix}owner`, buttonText: { displayText: '☰ OWNER' }, type: 1 }
@@ -749,7 +749,7 @@ zeroyt7.sendMessage(from, buffer, sticker, { quoted: ftrol })
 break
 case 'ttp':
 if (args.length == 0) return reply(`Example: ${prefix + command} Hai`)
-buffer = await getBuffer(`https://api.xteam.xyz/ttp?file&text=${encodeURI(q)}`)
+buffer = await getBuffer(`http://leyscoders-api.herokuapp.com/api/textto-image?text=${q}`)
 zeroyt7.sendMessage(from, buffer, sticker, { quoted: ftrol })
 break
 case 'sticker':
@@ -772,7 +772,7 @@ reply(mess.error.stick)
 .on('end', function () {
 console.log('Finish')
 buffer = fs.readFileSync(ran)
-costum(buffer, sticker, Verived, `Jangan Lupa Subscribe Zero YT7`)
+costum(buffer, sticker, Verived, `[  ✓  ] Done...`)
 fs.unlinkSync(media)
 fs.unlinkSync(ran)
 })
@@ -837,7 +837,7 @@ exec(`ffmpeg -i ${media} ${ran}`, (err) => {
 fs.unlinkSync(media)
 if (err) return reply(' Gagal, pada saat mengkonversi sticker ke gambar ')
 buffer = fs.readFileSync(ran)
-costum(buffer, image, Verived, `Jangan Lupa Subscribe Zero YT7`)
+costum(buffer, image, Verived, `[  ✓  ] Done...`)
 fs.unlinkSync(ran)
 })
 break
@@ -865,7 +865,7 @@ ran = getRandom('.webp')
 exec(`ffmpeg -i ${anum} ${ran}`, (err) => {
 fs.unlinkSync(anum)
 buffer = fs.readFileSync(ran)
-zeroyt7.sendMessage(from, buffer, video, { quoted: ftrol, caption: 'Done... Jangan Lupa Subscribe Zero YT7' })
+zeroyt7.sendMessage(from, buffer, video, { quoted: ftrol, caption: '[  ✓  ] Done...' })
 fs.unlinkSync(ran)
 })
 break
@@ -939,7 +939,7 @@ case 'estetik':
 
 	case 'quoteyt':
 		bufff = await getBuffer(`https://api.dapuhy.ga/api/randomimage/quotesyt?apikey=${DapKey}`)
-		zeroyt7.sendMessage(from, bufff, image, { caption: ':)' })
+		zeroyt7.sendMessage(from, bufff, image, { quoted: ftrol, caption: ':)' })
 	    break
 		
 	case 'darkjoke':
