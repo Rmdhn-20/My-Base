@@ -116,8 +116,8 @@ module.exports = zeroyt7 = async (zeroyt7, mek, _welkom) => {
 //━━━━━━━━━━━━━━━[ CONNECTION 1 ]━━━━━━━━━━━━━━━━━//
 
 		mess = {
-			wait: 'Sabar ...',
-			success: 'Done ...',
+			wait: '[ ⏳ ] Sabar ...',
+			success: '[ ✓ ] Done ...',
 			error: {
 				stick: 'Gagal Convert Gambar To Sticker... Coba Lagi !',
 				Iv: 'Linknya Error !'
@@ -389,7 +389,7 @@ switch (command) {
                 const bio = sts
               menunya = 
 `Hi ${pushname}, ${tampilUcapan}✨
-Saya ${botname} Yg Siap Membantu ${pushname}...
+Saya ${botname} Siap Membantu...
 
 ╭─❒ 「 Bot Info 」 ❒
 ├ Nama Bot : ${botname}
@@ -438,6 +438,7 @@ Saya ${botname} Yg Siap Membantu ${pushname}...
 ╭─⬣「 Sosmed Menu 」⬣
 │ あ ${prefix}ytdl
 │ あ ${prefix}tiktok
+│ あ ${prefix}tiktoknowm
 │ あ ${prefix}igdl
 └⬣
 
@@ -460,10 +461,11 @@ Saya ${botname} Yg Siap Membantu ${pushname}...
 │ あ ${prefix}storyanime
 └⬣
 	
-╭─⬣「 Owner Menu 」⬣
+╭─⬣「 Info Menu 」⬣
 │ あ ${prefix}owner
 │ あ ${prefix}bc
 │ あ ${prefix}report
+│ あ ${prefix}infobot
 └⬣`
 teks =
 `WhatsApp : wa.me/6289618777587\nGithub : github.com/Rmdhn-20\nIG : instagram.com/ekuzikaa_18`
@@ -1011,27 +1013,29 @@ case 'storyanime':
 
 case 'ytdl':
     if (args.length < 1) return reply('Link nya manaa??')
-    yt = await fetchJson(`https://api.zekais.com/youtube?url=${args[0]}&apikey=lbLbxbVw`)
+    yt = await fetchJson(`https://api.zekais.com/youtube?url=${q}&apikey=lbLbxbVw`)
     an = await getBuffer(yt.thumb)
     resnya = `*Y O U T U B E - B U T T O N*\n\nJudul : ${yt.title}\nChannel : ${yt.channel}\nPublished : ${yt.published}\nViews : ${yt.views}\nLikes : ${yt.likes}\nDescription : ${yt.desc}\n\n`
     tesk = `Silahkan Pilih Mau Download Audio or Video`
     but = [
-        { buttonId: `${prefix}audio ${args[0]}`, buttonText: { displayText: '☰ AUDIO' }, type: 1 },
-        { buttonId: `${prefix}video ${args[0]}`, buttonText: { displayText: '☰ VIDEO' }, type: 1 }
+        { buttonId: `${prefix}audio ${q}`, buttonText: { displayText: '☰ AUDIO' }, type: 1 },
+        { buttonId: `${prefix}video ${q}`, buttonText: { displayText: '☰ VIDEO' }, type: 1 }
       ]
       sendButLocation(from, resnya, tesk, an, but)
 break
 
 case 'audio':
     if (args.length < 1) return reply('Link?')
-    yu = await fetchJson(`https://api.zekais.com/youtube?url=${args[0]}&apikey=lbLbxbVw`)
+    reply(mess.wait)
+    yu = await fetchJson(`https://api.zekais.com/youtube?url=${q}&apikey=lbLbxbVw`)
     let { url } = yu.audio[0]
     sendMediaURL(from, `${url}`, '', {quoted:mek})
     break
 
 case 'video':
     if (args.length < 1) return reply('Link?')
-    ut = await fetchJson(`https://api.zekais.com/youtube?url=${args[0]}&apikey=lbLbxbVw`)
+    reply(mess.wait)
+    ut = await fetchJson(`https://api.zekais.com/youtube?url=${q}&apikey=lbLbxbVw`)
     let aha = ut.video[0].url
     sendMediaURL(from, `${aha}`, '', {quoted:mek})
     break
@@ -1039,12 +1043,11 @@ case 'video':
 case 'tiktok':
 case 'ttdl':
     if (args.length < 1) return reply('link?')
-    ruh = await fetchJson(`https://api.xteam.xyz/dl/tiktok?url=${q}&APIKEY=db0e06bd9f096399`)
-    rr = ruh.result
-    teea = `Username : ${rr.name}\nCaption : ${rr.caption}\nLink dl : ${rr.link_dl1}`
-    Buf = await getBuffer(rr.link_dl1)
-    zeroyt7.sendMessage(from, Buf, video, { caption : teea })
-    break
+    ruh = await fetchJson(`https://zenzapi.xyz/api/downloader/tiktok?url=${q}&apikey=exz123`)
+    rr = await getBuffer(ruh.result.watermark)
+    reply(mess.wait)
+    zeroyt7.sendMessage(from, rr, video, {quoted:ftrol})
+break
 		
 	case 'igdl':
 	    if (args.length < 1) return reply('Link?')
@@ -1052,8 +1055,9 @@ case 'ttdl':
 	    const { username, full_name, followers } = aaa.user
 	    teex = `+ Username : ${username}\n+ Full Name : ${full_name}\n+ Followers : ${followers}\n`
 	    bufnya = aaa.result.url
+            type = aaa.result.type
 	    reply(mess.wait)
-	    zeroyt7.sendMessage(from, bufnya, video, { caption : teex })
+	    zeroyt7.sendMessage(from, bufnya, type, { caption : teex })
 		break
 
 //━━━━━━━━━━━━━━━[ FITUR OWNER ]━━━━━━━━━━━━━━━━━//
