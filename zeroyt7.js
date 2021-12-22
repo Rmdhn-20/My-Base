@@ -439,6 +439,7 @@ Saya ${botname} Siap Membantu...
 │ あ ${prefix}ytdl
 │ あ ${prefix}tiktok
 │ あ ${prefix}tiktoknowm
+│ あ ${prefix}tiktokaudio
 │ あ ${prefix}igdl
 └⬣
 
@@ -1029,7 +1030,7 @@ case 'audio':
     reply(mess.wait)
     yu = await fetchJson(`https://api.zekais.com/youtube?url=${q}&apikey=lbLbxbVw`)
     let { url } = yu.audio[0]
-    sendMediaURL(from, `${url}`, '', {quoted:mek})
+    zeroyt7.sendMessage(from, url, audio, {quoted:ftrol})
     break
 
 case 'video':
@@ -1037,7 +1038,7 @@ case 'video':
     reply(mess.wait)
     ut = await fetchJson(`https://api.zekais.com/youtube?url=${q}&apikey=lbLbxbVw`)
     let aha = ut.video[0].url
-    sendMediaURL(from, `${aha}`, '', {quoted:mek})
+    zeroyt7.sendMessage(from, aha, video, {quoted:ftrol})
     break
 
 case 'tiktok':
@@ -1048,7 +1049,24 @@ case 'ttdl':
     reply(mess.wait)
     zeroyt7.sendMessage(from, rr, video, {quoted:ftrol})
 break
-		
+
+case 'tiktoknowm':
+case 'ttnowm':
+    if (args.length < 1) return reply('link?')
+    TOl = await fetchJson(`https://zenzapi.xyz/api/downloader/tiktok?url=${q}&apikey=exz123`)
+    Til = await getBuffer(TOl.result.nowatermark)
+    reply(mess.wait)
+    zeroyt7.sendMessage(from, Til, video, {quoted:ftrol})
+break
+
+case 'tiktokaudio':
+case 'ttaudio':
+    if (args.length < 1) return reply('link?')
+    memk = await fetchJson(`https://zenzapi.xyz/api/downloader/tiktok?url=${q}&apikey=exz123`)
+    itil = await getBuffer(memk.result.audio)
+    reply(mess.wait)
+    zeroyt7.sendMessage(from, itil, audio, {quoted:ftrol})
+break		
 	case 'igdl':
 	    if (args.length < 1) return reply('Link?')
 	    aaa = await fetchJson(`https://api.dapuhy.ga/api/socialmedia/igdownload?url=${q}&apikey=${DapKey}`)
