@@ -12,10 +12,9 @@ RUN apt-get update && \
 
 COPY package.json .
 RUN npm install -g npm@latest
+RUN npm install @adiwajshing/baileys@latest
 RUN npm install
 RUN npm instal pm2 -g
-RUN npm install ytdl-core@latest
-RUN npm install yt-search@latest
 #RUN npm install -g npm-check-updates
 #RUN ncu --upgrade
 ENV PM2_PUBLIC_KEY hh73adnvlt9kan1
