@@ -1099,7 +1099,7 @@ case 'igvideo':
 case 'igreels':
 	    if (args.length < 1) return reply('Link?')
 	    aaa = await fetchJson(`https://zenzapi.xyz/api/downloader/instagram?url=${q}&apikey=exz123`)
-	    const { username, total_views, total_plays, total_comment, like, durasi } = aaa.caption
+	    const { username, total_views, total_plays, total_comment, like, durasi } = aaa.result.caption
 	    teex = `+ Username : ${username}\n+ Like : ${like} \n+ Views : ${total_views}\n+ Comment : ${total_comment}\n+ Play : ${total_plays}\n+ Duration : ${durasi}\n`
 	    bufnya = aaa.result.link
 	    reply(mess.wait)
