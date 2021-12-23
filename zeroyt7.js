@@ -63,6 +63,7 @@ zerokey = setting.ZeroKey
 ZeksApi = setting.zeksKey
 ownername = setting.OwnerName
 DapKey = setting.DapKey
+banChats = true;
 
 //━━━━━━━━━━━━━━━[ MODUL EXPORTS ]━━━━━━━━━━━━━━━━━//
 
@@ -216,6 +217,19 @@ var ase = new Date();
             let buttonMessages = { locationMessage: { jpegThumbnail: gam1 }, contentText: text1, footerText: desc1, buttons: but, headerType: 6 }
             return zeroyt7.sendMessage(id, buttonMessages, MessageType.buttonsMessage, options)
         }
+        ///Button Video
+const sendButVideo = async(id, text1, desc1, vid1, but = [], options = {}) => {
+kma = vid1
+mhan = await ikyy.prepareMessage(from, kma, video)
+const buttonMessages = {
+videoMessage: mhan.message.videoMessage,
+contentText: text1,
+footerText: desc1,
+buttons: but,
+headerType: 5
+}
+zeroyt7.sendMessage(id, buttonMessages, MessageType.buttonsMessage, options)
+}
 
 //━━━━━━━━━━━━━━━[ FAKE FAKEAN ]━━━━━━━━━━━━━━━━━//
         let fakestatus = (teks) => {
@@ -1022,7 +1036,7 @@ case 'ytdl':
         { buttonId: `${prefix}audio ${q}`, buttonText: { displayText: '☰ AUDIO' }, type: 1 },
         { buttonId: `${prefix}video ${q}`, buttonText: { displayText: '☰ VIDEO' }, type: 1 }
       ]
-      sendButLocation(from, resnya, tesk, an, but)
+      sendButImage(from, resnya, tesk, an, but)
 break
 
 case 'audio':
@@ -1171,6 +1185,39 @@ teks =
 └─────────────────────`
 zeroyt7.sendMessage(from, teks, text, {quoted: ftrol})
 break
+case 'public':
+        	  if (!mek.key.fromMe) return 
+              if (banChats === false) return 
+              banChats = false
+              reply(`Sukses mode publik gan`)
+              break
+case "set":
+case "mode":
+        if (!mek.key.fromMe) return;
+        sendButton(from, `SELF OR PUBLIC`, `Silahkan pilih salah satu`, [
+          {
+            buttonId: `${prefix}self`,
+            buttonText: {
+              displayText: `⬡ SELF `,
+            },
+            type: 1,
+          },
+          {
+            buttonId: `${prefix}public`,
+            buttonText: {
+              displayText: `⬡ PUBLIC`,
+            },
+            type: 1,
+          },
+        ]);
+        break;
+	      case 'self':
+              if (.key.fromMe) return 
+              if (banChats === true) return
+        	  uptime = process.uptime()
+        	  banChats = true
+              reply(`Success mode self gan`)
+              break
 
 //━━━━━━━━━━━━━━━[ INFO BOT ]━━━━━━━━━━━━━━━━━//
 
