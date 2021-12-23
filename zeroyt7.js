@@ -409,7 +409,7 @@ Saya ${botname} Siap Membantu...
 ├ Nama Bot : ${botname}
 ├ Nama Owner : ${ownername}
 ├ Prefix : ⌜ Multi Prefix ⌟
-├ Nomor Owner : ${owner.split('@')[0]}
+├ Nomor Owner : @${owner.split('@')[0]}
 ├ Runtime : ${runtime(process.uptime())}
 ├ Language : Javascript & Nodejs
 ├ Library : Baileys
@@ -418,9 +418,9 @@ Saya ${botname} Siap Membantu...
 └❏
 
 ╭─❒ 「 User Info 」 ❒
-├ Status : ${isOwner ? 'Owner 🔰' : 'User 🗿'}
+├ Status : ${isOwner ? 'Owner 🔰' : 'User ✓'}
 ├ Nama User : ${pushname}
-├ Nomor User : ${sender.split('@')[0]}
+├ Nomor User : @${sender.split('@')[0]}
 ├ Bio User : ${bio.status}
 └❏
 
@@ -454,7 +454,10 @@ Saya ${botname} Siap Membantu...
 │ あ ${prefix}tiktok
 │ あ ${prefix}tiktoknowm
 │ あ ${prefix}tiktokaudio
-│ あ ${prefix}igdl
+│ あ ${prefix}igfoto
+│ あ ${prefix}igvideo
+│ あ ${prefix}igreels
+│ あ ${prefix}fbvid
 └⬣
 
 ╭─⬣「 Random Menu 」⬣
@@ -1043,7 +1046,7 @@ case 'audio':
     if (args.length < 1) return reply('Link?')
     reply(mess.wait)
     yu = await fetchJson(`https://api.zekais.com/youtube?url=${q}&apikey=lbLbxbVw`)
-    let { url } = yu.audio[0]
+    let { url } = await getBuffer(yu.audio[0])
     zeroyt7.sendMessage(from, url, audio, {quoted:ftrol})
     break
 
@@ -1051,7 +1054,7 @@ case 'video':
     if (args.length < 1) return reply('Link?')
     reply(mess.wait)
     ut = await fetchJson(`https://api.zekais.com/youtube?url=${q}&apikey=lbLbxbVw`)
-    let aha = ut.video[0].url
+    let aha = await getBuffer(ut.video[0].url)
     zeroyt7.sendMessage(from, aha, video, {quoted:ftrol})
     break
 
@@ -1081,16 +1084,39 @@ case 'ttaudio':
     reply(mess.wait)
     zeroyt7.sendMessage(from, itil, audio, {quoted:ftrol})
 break		
-	case 'igdl':
+	case 'igfoto':
 	    if (args.length < 1) return reply('Link?')
-	    aaa = await fetchJson(`https://api.dapuhy.ga/api/socialmedia/igdownload?url=${q}&apikey=${DapKey}`)
-	    const { username, full_name, followers } = aaa.user
-	    teex = `+ Username : ${username}\n+ Full Name : ${full_name}\n+ Followers : ${followers}\n`
-	    bufnya = aaa.result.url
-            type = aaa.result.type
+	    gege = await fetchJson(`https://zenzapi.xyz/api/downloader/instagram?url=${q}&apikey=exz123`)
+	    username = gege.result.caption.username
+	    like = gege.result.caption.total_like
+	    comment = gege.result.caption.total_comment
+	    desc = gege.result.caption.desc
+	    ini_text = `+ Username : ${username}\n+ Like : ${like}\n+ Comment : ${comment}\n+ Description : ${desc}\n`
+	    ngebuff = gege.result.link
 	    reply(mess.wait)
-	    zeroyt7.sendMessage(from, bufnya, type, { caption : teex })
+	    zeroyt7.sendMessage(from, ngebuff, image, { caption : ini_text })
 		break
+case 'igvideo':
+case 'igreels':
+	    if (args.length < 1) return reply('Link?')
+	    aaa = await fetchJson(`https://zenzapi.xyz/api/downloader/instagram?url=${q}&apikey=exz123`)
+	    const { username, total_views, total_plays, total_comment, like, durasi } = aaa.caption
+	    teex = `+ Username : ${username}\n+ Like : ${like} \n+ Views : ${total_views}\n+ Comment : ${total_comment}\n+ Play : ${total_plays}\n+ Duration : ${durasi}\n`
+	    bufnya = aaa.result.link
+	    reply(mess.wait)
+	    zeroyt7.sendMessage(from, bufnya, video, { caption : teex })
+		break
+	case 'fb':
+	case 'fbvid':
+	if (args.length < 1) return reply('Link?')
+	babi = await fetchJson(`https://api.xteam.xyz/dl/fbv2?url=${q}&APIKEY=483b65681fe3dfb7`)
+	babo = babi.result
+	teksnyi = `Source : ${babo.meta.source}\nDuration : ${babo.meta.duration}\n\n _Tunggu sebentar, media sedang dikirim_`
+	ftny = await getBuffer(babo.thumb)
+	vidnya = await getBuffer(babo.hd.url)
+	zeroyt7.sendMessage(from, ftny, image, { caption : teksnyi })
+	zeroyt7.sendMessage(from, vidnya, video, { quoted : ftrol })
+	break
 
 //━━━━━━━━━━━━━━━[ FITUR OWNER ]━━━━━━━━━━━━━━━━━//
 
