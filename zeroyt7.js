@@ -1045,7 +1045,7 @@ case 'audio':
     if (args.length < 1) return reply('Link?')
     reply(mess.wait)
     yu = await fetchJson(`https://api.zekais.com/youtube?url=${q}&apikey=lbLbxbVw`)
-    let { url } = await getBuffer(yu.audio[0])
+    let url = await getBuffer(yu.audio[0].url)
     zeroyt7.sendMessage(from, url, audio, {quoted:ftrol})
     break
 
@@ -1091,7 +1091,7 @@ break
 	    comment = gege.result.caption.total_comment
 	    desc = gege.result.caption.desc
 	    ini_text = `+ Username : ${username}\n+ Like : ${like}\n+ Comment : ${comment}\n+ Description : ${desc}\n`
-	    ngebuff = gege.result.link
+	    ngebuff = await getBuffer(gege.result.link)
 	    reply(mess.wait)
 	    zeroyt7.sendMessage(from, ngebuff, image, { caption : ini_text })
 		break
@@ -1101,7 +1101,7 @@ case 'igreels':
 	    aaa = await fetchJson(`https://zenzapi.xyz/api/downloader/instagram?url=${q}&apikey=exz123`)
 	    const { username, total_views, total_plays, total_comment, like, durasi } = aaa.result.caption
 	    teex = `+ Username : ${username}\n+ Like : ${like} \n+ Views : ${total_views}\n+ Comment : ${total_comment}\n+ Play : ${total_plays}\n+ Duration : ${durasi}\n`
-	    bufnya = aaa.result.link
+	    bufnya = await getBuffer(aaa.result.link)
 	    reply(mess.wait)
 	    zeroyt7.sendMessage(from, bufnya, video, { caption : teex })
 		break
