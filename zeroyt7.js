@@ -769,8 +769,7 @@ zeroyt7.sendMessage(from, buffer, sticker, { quoted: ftrol })
 break
 case 'ttp':
 if (args.length == 0) return reply(`Example: ${prefix + command} Hai`)
-buffer = await getBuffer(`http://leyscoders-api.herokuapp.com/api/textto-image?text=${q}`)
-zeroyt7.sendMessage(from, buffer, sticker, { quoted: ftrol })
+sendStickerFromUrl(from, `http://leyscoders-api.herokuapp.com/api/textto-image?text=${q}`)
 break
 case 'sticker':
 case 'stiker':
