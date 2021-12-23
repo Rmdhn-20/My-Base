@@ -1212,7 +1212,7 @@ case "mode":
         ]);
         break;
 	      case 'self':
-              if (.key.fromMe) return 
+              if (!mek.key.fromMe) return 
               if (banChats === true) return
         	  uptime = process.uptime()
         	  banChats = true
