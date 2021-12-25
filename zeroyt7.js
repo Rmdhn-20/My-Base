@@ -1106,7 +1106,7 @@ case 'igvideo':
 case 'igreels':
 	    if (args.length < 1) return reply('Link?')
 	    aaa = await fetchJson(`https://zenzapi.xyz/api/downloader/instagram?url=${q}&apikey=exz123`)
-	    const { username, total_views, total_plays, total_comment, like, durasi } = aaa.result.caption
+	    let { username, total_views, total_plays, total_comment, like, durasi } = aaa.result.caption
 	    teex = `+ Username : ${username}\n+ Like : ${like} \n+ Views : ${total_views}\n+ Comment : ${total_comment}\n+ Play : ${total_plays}\n+ Duration : ${durasi}\n`
 	    bufnya = await getBuffer(aaa.result.link)
 	    reply(mess.wait)
@@ -1161,7 +1161,7 @@ case 'igstalker':
 case 'stalkig':
     if (args.length < 1) return reply('Username nya?')
     apiny = await fetchJson(`https://zenzapi.xyz/api/stalker/ig2?username=${q}&apikey=exz123`)
-    const { username, fullName, biography, followers, following } = apiny.result
+    let { username, fullName, biography, followers, following } = apiny.result
     txtny = `• Username : ${username}\n• Full Name : ${fullName}\n• Bio : ${biography}\n• Followers : ${followers}\n• Following : ${following}`
     ppnya = await getBuffer(apiny.result.profilePic)
     reply(mess.wait)
@@ -1173,8 +1173,8 @@ case 'stalktiktok':
 case 'stalktt':
     if (args.length < 1) return reply('Username nya?')
     l = await fetchJson(`https://leyscoders-api.herokuapp.com/api/tiktok-stalk?name=${q}&apikey=dappakntlll`)
-    const { uniqueId, nickname, signature } = l.result.user
-    conts { followerCount, followingCount, videoCount } = l.result.stats
+    let { uniqueId, nickname, signature } = l.result.user
+    let { followerCount, followingCount, videoCount } = l.result.stats
     resnn = `× Username : ${uniqueId}\n× NickName : ${nickname}\n× Followers : ${followerCount}\n× Following : ${followingCount}\n× Bio : ${signature}`
     dibuff = await getBuffer(l.result.avatarLarger)
     reply(mess.wait)
