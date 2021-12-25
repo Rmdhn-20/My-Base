@@ -1161,8 +1161,7 @@ case 'igstalker':
 case 'stalkig':
     if (args.length < 1) return reply('Username nya?')
     apiny = await fetchJson(`https://zenzapi.xyz/api/stalker/ig2?username=${q}&apikey=exz123`)
-    let { username, fullName, biography, followers, following } = apiny.result
-    txtny = `• Username : ${username}\n• Full Name : ${fullName}\n• Bio : ${biography}\n• Followers : ${followers}\n• Following : ${following}`
+    txtny = `• Username : ${apiny.result.username}\n• Full Name : ${apiny.result.fullName}\n• Bio : ${apiny.result.biography}\n• Followers : ${apiny.result.followers}\n• Following : ${apiny.result.following}`
     ppnya = await getBuffer(apiny.result.profilePic)
     reply(mess.wait)
     zeroyt7.sendMessage(from, ppnya, image, { caption : txtny })
@@ -1173,9 +1172,7 @@ case 'stalktiktok':
 case 'stalktt':
     if (args.length < 1) return reply('Username nya?')
     l = await fetchJson(`https://leyscoders-api.herokuapp.com/api/tiktok-stalk?name=${q}&apikey=dappakntlll`)
-    let { uniqueId, nickname, signature } = l.result.user
-    let { followerCount, followingCount, videoCount } = l.result.stats
-    resnn = `× Username : ${uniqueId}\n× NickName : ${nickname}\n× Followers : ${followerCount}\n× Following : ${followingCount}\n× Bio : ${signature}`
+    resnn = `× Username : ${l.result.user.uniqueId}\n× NickName : ${l.result.user.nickname}\n× Followers : ${l.result.stats.followerCount}\n× Following : ${l.result.stats.followingCount}\n× Bio : ${l.result.user.signature}`
     dibuff = await getBuffer(l.result.avatarLarger)
     reply(mess.wait)
     zeroyt7.sendMessage(from, dibuff, image, { caption : resnn })
