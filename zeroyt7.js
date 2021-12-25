@@ -63,7 +63,7 @@ zerokey = setting.ZeroKey
 ZeksApi = setting.zeksKey
 ownername = setting.OwnerName
 DapKey = setting.DapKey
-banChats = true;
+banChats = false;
 
 //━━━━━━━━━━━━━━━[ MODUL EXPORTS ]━━━━━━━━━━━━━━━━━//
 
@@ -425,15 +425,15 @@ Saya ${botname} Siap Membantu...
 └❏
 
 ╭─⬣「 Group Menu 」⬣
-│ あ ${prefix}antilink
-│ あ ${prefix}welcome
-│ あ ${prefix}antivirtex
-│ あ ${prefix}group
+│ あ ${prefix}antilink [on/off]
+│ あ ${prefix}welcome [on/off]
+│ あ ${prefix}antivirtex [on/off]
+│ あ ${prefix}group [buka/tutup]
 │ あ ${prefix}linkgrup
-│ あ ${prefix}promote
-│ あ ${prefix}demote
-│ あ ${prefix}add
-│ あ ${prefix}kick
+│ あ ${prefix}promote [@tag]
+│ あ ${prefix}demote [@tag]
+│ あ ${prefix}add [628xx]
+│ あ ${prefix}kick [@tag]
 │ あ ${prefix}setpp
 │ あ ${prefix}setdesc
 │ あ ${prefix}setname
@@ -441,23 +441,33 @@ Saya ${botname} Siap Membantu...
 └⬣
 
 ╭─⬣「 Sticker Menu 」⬣
-│ あ ${prefix}attp
-│ あ ${prefix}ttp
-│ あ ${prefix}toimg
-│ あ ${prefix}sticker
-│ あ ${prefix}tomp3
-│ あ ${prefix}tovideo
+│ あ ${prefix}attp [teks]
+│ あ ${prefix}ttp [teks]
+│ あ ${prefix}toimg [kirim/reply stiker]
+│ あ ${prefix}sticker [kirim/reply img]
+│ あ ${prefix}tomp3 [reply video]
+│ あ ${prefix}tovideo [reply stiker]
 └⬣
 
 ╭─⬣「 Sosmed Menu 」⬣
-│ あ ${prefix}ytdl
-│ あ ${prefix}tiktok
-│ あ ${prefix}tiktoknowm
-│ あ ${prefix}tiktokaudio
-│ あ ${prefix}igfoto
-│ あ ${prefix}igvideo
-│ あ ${prefix}igreels
-│ あ ${prefix}fbvid
+│ あ ${prefix}ytmp4 [link]
+│ あ ${prefix}ytmp3 [link]
+│ あ ${prefix}ytshort [link]
+│ あ ${prefix}play [query]
+│ あ ${prefix}tiktok [link]
+│ あ ${prefix}tiktoknowm [link]
+│ あ ${prefix}tiktokaudio [link]
+│ あ ${prefix}igfoto [link]
+│ あ ${prefix}igvideo [link]
+│ あ ${prefix}igreels [link]
+│ あ ${prefix}fbvid [link]
+│ あ ${prefix}twitvideo [link]
+└⬣
+
+╭─⬣「 Stalker Menu 」⬣
+│ あ ${prefix}igstalk [Username]
+│ あ ${prefix}tiktokstalk [Username]
+│ あ ${prefix}igstory [Username]
 └⬣
 
 ╭─⬣「 Random Menu 」⬣
@@ -502,7 +512,6 @@ timestamp = speed();
 *┃┃* Nama Owner : ${ownername}
 *┃┃* Nama Bot : ${botname}
 *┃┃* Prefix : ⌜ Multi Prefix ⌟
-*┃┃* Total Pengguna : ${pendaftar.length}
 *┃┃* Runtime : ${runtime(process.uptime())}
 *┃┃* Speed : ${latensi.toFixed(4)} second
 *┃┃* Language : Javascript & Nodejs
@@ -510,7 +519,7 @@ timestamp = speed();
 *┃┗━━━━━━━━*
 *┃◗ Thanks To Allah S.W.T*
 *┃◗ Thank To Ortu*
-*┃◗ Thank To Zero YT7 (Creator)*
+*┃◗ Thank To EkuziQ (Owner)*
 *┃◗ Thanks To All Subscriberku*
 *┗━━━━━━━ •*`
                   but = [
@@ -742,6 +751,7 @@ reply(mess.wait)
 reply(`\`\`\`[ ✓ ] Sukses Mengganti Profil Group\`\`\` *${groupMetadata.subject}*`)
 break
 case 'hidetag':
+case 'h'
 if (!isGroup) return reply(mess.only.group)
 if (!isGroupAdmins) return reply(mess.only.admin)
 if (!isBotGroupAdmins) return reply(mess.only.Badmin)
@@ -1028,19 +1038,15 @@ case 'storyanime':
 
 //━━━━━━━━━━━━━━━[ FITUR SOSMED ]━━━━━━━━━━━━━━━━━//
 
-case 'ytdl':
-    if (args.length < 1) return reply('Link nya manaa??')
-    yt = await fetchJson(`https://api.zekais.com/youtube?url=${q}&apikey=lbLbxbVw`)
-    an = await getBuffer(yt.thumb)
-    resnya = `*Y O U T U B E - B U T T O N*\n\nJudul : ${yt.title}\nChannel : ${yt.channel}\nPublished : ${yt.published}\nViews : ${yt.views}\nLikes : ${yt.likes}\nDescription : ${yt.desc}\n\n`
-    tesk = `Silahkan Pilih Mau Download Audio or Video`
-    but = [
-        { buttonId: `${prefix}audio ${q}`, buttonText: { displayText: '☰ AUDIO' }, type: 1 },
-        { buttonId: `${prefix}video ${q}`, buttonText: { displayText: '☰ VIDEO' }, type: 1 }
-      ]
-      sendButImage(from, resnya, tesk, an, but)
-break
-
+case 'play':
+    if (args.length < 1) return reply('Judul nya?')
+    i = await fetchJson(`https://api-xcoders.xyz/api/download/playmp4?query=${q}&apikey=cyXNcMnw3x`)
+    au = i.result
+    ua = `Judul : ${au.title}\nDurasi : ${au.duration}\nSize : ${au.size}`
+    v = await getBuffer(au.url)
+    zeroyt7.sendMessage(from, v, video, { caption : ua })
+    break
+case 'ytmp3':
 case 'audio':
     if (args.length < 1) return reply('Link?')
     reply(mess.wait)
@@ -1049,6 +1055,7 @@ case 'audio':
     zeroyt7.sendMessage(from, url, audio, {quoted:ftrol})
     break
 
+case 'ytmp4':
 case 'video':
     if (args.length < 1) return reply('Link?')
     reply(mess.wait)
@@ -1107,6 +1114,7 @@ case 'igreels':
 		break
 	case 'fb':
 	case 'fbvid':
+	case 'fbvideo':
 	if (args.length < 1) return reply('Link?')
 	babi = await fetchJson(`https://api.xteam.xyz/dl/fbv2?url=${q}&APIKEY=483b65681fe3dfb7`)
 	babo = babi.result
@@ -1116,7 +1124,72 @@ case 'igreels':
 	zeroyt7.sendMessage(from, ftny, image, { caption : teksnyi })
 	zeroyt7.sendMessage(from, vidnya, video, { quoted : ftrol })
 	break
+case 'fb2':
+case 'fbvid2':
+case 'fbvideo2':
+    if (args.length < 1) return reply('Mana link nya')
+    anj = await fetchJson(`https://api-xcoders.xyz/api/download/fb?url=${q}&apikey=cyXNcMnw3x`)
+    tai = await getBuffer(anj.result.data.url)
+    zeroyt7.sendMessage(from, tai, video, {quoted:mek})
+case 'ytshort':
+    if (args.length < 1) return reply('link?')
+    ehm = await fetchJson(`https://api-xcoders.xyz/api/download/ytshort?url=${q}&apikey=cyXNcMnw3x`)
+    ehe = ehm.result
+    ttex = `*>* Judul : ${ehe.title}\n*>* Durasi : ${ehe.duration}\n*>* Size : ${ehe.size}\n\n_Tunggu sebentar, media sedang dikirim_`
+    imge = await getBuffer(ehe.thumbnail)
+    urr = await getBuffer(ehe.url)
+    zeroyt7.sendMessage(from, imge, image, { caption : ttstalk })
+    reply(mess.wait)
+    zeroyt7.sendMessage(from, urr, video, { quoted: ftrol })
+    break
+case 'twitvid':
+case 'twitvideo':
+    if (argan.length < 1) return reply('Link?')
+    ttw = await fetchJson(`https://api-xcoders.xyz/api/download/twitter?url=${q}&apikey=cyXNcMnw3x`)
+    tww = ttw.result.desc
+    buh = await getBuffer(ttw.result.thumb)
+    bww = await getBuffer(tww.result.SD)
+    zeroyt7.sendMessage(from, buh, image, { caption : tww })
+    reply(mess.wait)
+    zeroyt7.sendButton(from, bww, video, { quoted : ftrol })
+    break
 
+//━━━━━━━━━━━━━━━[ FITUR STALKER ]━━━━━━━━━━━━━━━━//
+
+case 'igstalk':
+case 'igstalker':
+case 'stalkig':
+    if (args.length < 1) return reply('Username nya?')
+    apiny = await fetchJson(`https://zenzapi.xyz/api/stalker/ig2?username=${q}&apikey=exz123`)
+    const { username, fullName, biography, followers, following } = apiny.result
+    txtny = `• Username : ${username}\n• Full Name : ${fullName}\n• Bio : ${biography}\n• Followers : ${followers}\n• Following : ${following}`
+    ppnya = await getBuffer(apiny.result.profilePic)
+    reply(mess.wait)
+    zeroyt7.sendMessage(from, ppnya, image, { caption : txtny })
+    break
+case 'tiktokstalk':
+case 'ttstalk':
+case 'stalktiktok':
+case 'stalktt':
+    if (args.length < 1) return reply('Username nya?')
+    l = await fetchJson(`https://leyscoders-api.herokuapp.com/api/tiktok-stalk?name=${q}&apikey=dappakntlll`)
+    const { uniqueId, nickname, signature } = l.result.user
+    conts { followerCount, followingCount, videoCount } = l.result.stats
+    resnn = `× Username : ${uniqueId}\n× NickName : ${nickname}\n× Followers : ${followerCount}\n× Following : ${followingCount}\n× Bio : ${signature}`
+    dibuff = await getBuffer(l.result.avatarLarger)
+    reply(mess.wait)
+    zeroyt7.sendMessage(from, dibuff, image, { caption : resnn })
+    break
+case 'igstory':
+case 'storyig':
+    if (args.length < 1) return reply('Username?')
+    storyny = await fetchJson(`https://api-xcoders.xyz/api/download/igstory?username=${q}&apikey=cyXNcMnw3x`)
+    r = storyny.result
+    typeny = r.type
+    b = await getBuffer(r.url)
+    zeroyt7.sendMessage(from, b, typeny, {quoted:mek})
+    break
+    
 //━━━━━━━━━━━━━━━[ FITUR OWNER ]━━━━━━━━━━━━━━━━━//
 
 case 'owner':
@@ -1124,11 +1197,11 @@ let inilist = []
 for (let i of ownerNumber) {
 let vname = zeroyt7.contacts[i] != undefined ? zeroyt7.contacts[i].vname || zeroyt7.contacts[i].notify : undefined
 inilist.push({
-"displayName": 'ZeroYT7',
+"displayName": 'EkuziQ',
 "vcard": 'BEGIN:VCARD\n'
 + 'VERSION:3.0\n'
 + `FN:${ownername}\n`
-+ `ORG: Creator ${ownername} ;\n`
++ `ORG: Creator ${botname}} ;\n`
 + `TEL;type=CELL;type=VOICE;waid=${owner}:${owner}\n`
 + 'END:VCARD'.trim()
 })
@@ -1203,7 +1276,6 @@ teks =
 ╭─────────────────────
 ├ Sc Ori = https://github.com/Zero-YT7/Base-ZeroYT7
 ├ Sc Recode = https://github.com/Rmdhn-20/My-Base
-├ Sc Full Fitur = https://youtube.com/ZeroYT7
 ├─────────────────────
 ├ Creator Base = Zero YT7
 ├ Owner Sc = EkuziQ
@@ -1248,20 +1320,17 @@ case "mode":
 
 case "speed":
 case "ping":
+case "runtime":
+case "test":
 timestamp = speed();
 latensi = speed() - timestamp;
+run = process.uptime();
 exec(`neofetch --stdout`, (error, stdout, stderr) => {
 child = stdout.toString("utf-8");
 ssd = child.replace(/Memory:/, "Ram:");
-pingnya = `*${ssd}Speed: ${latensi.toFixed(4)} Second*`;
+pingnya = `*${kyun(run)}*\n*${ssd}*\n*Speed: ${latensi.toFixed(4)} Second*`;
 reply(pingnya);
 });
-break
-case "runtime":
-case "test":
-run = process.uptime();
-teks = `${kyun(run)}`;
-reply(teks);
 break
 default:
 if (isOwner) {
