@@ -1184,7 +1184,8 @@ case 'storyig':
     r = storyny.result
     typeny = r.type
     b = await getBuffer(r.url)
-    zeroyt7.sendMessage(from, b, typeny, {quoted:mek})
+    zeroyt7.sendMessage(from, b, video, {quoted:mek})
+    zeroyt7.sendMessage(from, b, image, {quoted:mek})
     break
     
 //━━━━━━━━━━━━━━━[ FITUR OWNER ]━━━━━━━━━━━━━━━━━//
