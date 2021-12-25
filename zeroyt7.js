@@ -751,7 +751,7 @@ reply(mess.wait)
 reply(`\`\`\`[ ✓ ] Sukses Mengganti Profil Group\`\`\` *${groupMetadata.subject}*`)
 break
 case 'hidetag':
-case 'h'
+case 'h':
 if (!isGroup) return reply(mess.only.group)
 if (!isGroupAdmins) return reply(mess.only.admin)
 if (!isBotGroupAdmins) return reply(mess.only.Badmin)
