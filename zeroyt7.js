@@ -12,7 +12,7 @@
 
 //FOLLOW JUGA SOSMED GUE
 //INSTAGRAM : @ekuzikaa_18
-//TIKTOD : @ekuzika
+//TIKTOD : @exzuka_81
 //GITHUB : Rmdhn-20
 
 let { fetchJson, kyun, fetchText } = require('./lib/fetcher')
@@ -220,7 +220,7 @@ var ase = new Date();
         ///Button Video
 const sendButVideo = async(id, text1, desc1, vid1, but = [], options = {}) => {
 kma = vid1
-mhan = await ikyy.prepareMessage(from, kma, video)
+mhan = await zeroyt7.prepareMessage(from, kma, video)
 const buttonMessages = {
 videoMessage: mhan.message.videoMessage,
 contentText: text1,
@@ -413,7 +413,6 @@ Saya ${botname} Siap Membantu...
 ├ Runtime : ${runtime(process.uptime())}
 ├ Language : Javascript & Nodejs
 ├ Library : Baileys
-├ Totan Pengguna : ${pendaftar.length}
 ├ Speed : ${latensi.toFixed(4)} second
 └❏
 
@@ -467,7 +466,6 @@ Saya ${botname} Siap Membantu...
 ╭─⬣「 Stalker Menu 」⬣
 │ あ ${prefix}igstalk [Username]
 │ あ ${prefix}tiktokstalk [Username]
-│ あ ${prefix}igstory [Username]
 └⬣
 
 ╭─⬣「 Random Menu 」⬣
@@ -498,8 +496,8 @@ Saya ${botname} Siap Membantu...
 teks =
 `WhatsApp : wa.me/6289618777587\nGithub : github.com/Rmdhn-20\nIG : instagram.com/ekuzikaa_18`
 but = [
-          { buttonId: `${prefix}infobot`, buttonText: { displayText: '☰ INFO' }, type: 1 },
-          { buttonId: `${prefix}owner`, buttonText: { displayText: '☰ OWNER' }, type: 1 }
+          { buttonId: `!infobot`, buttonText: { displayText: '☰ INFO' }, type: 1 },
+          { buttonId: `!owner`, buttonText: { displayText: '☰ OWNER' }, type: 1 }
         ]
         sendButLocation(from, menunya, teks, gambar, but)
 break
@@ -520,11 +518,11 @@ timestamp = speed();
 *┃◗ Thanks To Allah S.W.T*
 *┃◗ Thank To Ortu*
 *┃◗ Thank To EkuziQ (Owner)*
-*┃◗ Thanks To All Subscriberku*
+*┃◗ Thanks To All*
 *┗━━━━━━━ •*`
                   but = [
-          { buttonId: `${prefix}owner`, buttonText: { displayText: '☰ OWNER' }, type: 1 },
-          { buttonId: `${prefix}menu`, buttonText: { displayText: '☰ MENU' }, type: 1 }
+          { buttonId: `!owner`, buttonText: { displayText: '☰ OWNER' }, type: 1 },
+          { buttonId: `!menu`, buttonText: { displayText: '☰ MENU' }, type: 1 }
         ]
         sendButton(from, teks, '© Created : EkuziQ', but, mek)
 break
@@ -957,7 +955,7 @@ case 'estetik':
     break
 
 	case 'quote':
-	    ihi = await fetchJson(`https://api.dapuhy.ga/api/fun/quoteslucu?apikey=${DapKey}`)
+	    ihi = await fetchJson(`https://api.dapuhy.xyz/api/fun/quoteslucu?apikey=${DapKey}`)
 	    op = ihi.quotes
 	    but = [
         	{ buttonId: `${prefix}owner`, buttonText: { displayText: '☰ OWNER' }, type: 1 },
@@ -967,13 +965,13 @@ case 'estetik':
     break
 
 	case 'quoteyt':
-		bufff = await getBuffer(`https://api.dapuhy.ga/api/randomimage/quotesyt?apikey=${DapKey}`)
+		bufff = await getBuffer(`https://api.dapuhy.xyz/api/randomimage/quotesyt?apikey=${DapKey}`)
 		zeroyt7.sendMessage(from, bufff, image, { quoted: ftrol, caption: ':)' })
 	    break
 		
 	case 'darkjoke':
 	case 'darkjokes':
-		getb = await getBuffer(`https://api.dapuhy.ga/api/randomimage/darkjokes?apikey=${DapKey}`)
+		getb = await getBuffer(`https://api.dapuhy.xyz/api/randomimage/darkjokes?apikey=${DapKey}`)
 		but = [
 			{ buttonId: `${prefix}owner`, buttonText: { displayText: '☰ OWNER' }, type: 1 },
 			{ buttonId: `${prefix}pantun`, buttonText: { displayText: '☰ NEXT' }, type: 1 }
@@ -983,7 +981,7 @@ case 'estetik':
 		
 	case 'ppcp':
 	case 'ppcouple':
-		rnya = await fetchJson(`https://api.dapuhy.ga/api/randomimage/couple?apikey=${DapKey}`)
+		rnya = await fetchJson(`https://api.dapuhy.xyz/api/randomimage/couple?apikey=${DapKey}`)
 		pria = await getBuffer(rnya.result.pria)
 		wanita = await getBuffer(rnya.result.wanita)
 		zeroyt7.sendMessage(from, pria, image, {quoted:mek})
@@ -1018,27 +1016,30 @@ but = [
      break
 
 case 'pinterest':
+case 'pin':
     if (args.length < 1) return reply('Apa yang mau dicari?')
-    dires = await getBuffer(`https://api.dapuhy.ga/api/search/pinterest-image?query=${q}&apikey=${DapKey}`)
+    dires = await getBuffer(`https://api.dapuhy.xyz/api/search/pinterest-image?query=${q}&apikey=${DapKey}`)
     zeroyt7.sendMessage(from, dires, image, {quoted:mek, caption: 'nie..'})
     break
 
 case 'tinyurl':
     if (args.length < 1) return reply('Mana link nya..')
-    vv = await fetchJson(`https://api.dapuhy.ga/api/others/tinyurl?url=${q}&apikey=${DapKey}`)
+    vv = await fetchJson(`https://api.dapuhy.xyz/api/others/tinyurl?url=${q}&apikey=${DapKey}`)
     mq = vv.result
     reply(mq)
     break
 
 case 'storyanime':
+case 'story':
     reply(mess.wait)
-    eee = await getBuffer(`https://api.dapuhy.ga/api/anime/storyanime?apikey=${DapKey}`)
+    eee = await getBuffer(`https://api.dapuhy.xyz/api/anime/storyanime?apikey=${DapKey}`)
     zeroyt7.sendMessage(from, eee, video, {quoted:ftrol})
     break
 
 //━━━━━━━━━━━━━━━[ FITUR SOSMED ]━━━━━━━━━━━━━━━━━//
 
 case 'play':
+    case 'p':
     if (args.length < 1) return reply('Judul nya?')
     i = await fetchJson(`https://api-xcoders.xyz/api/download/playmp4?query=${q}&apikey=cyXNcMnw3x`)
     au = i.result
@@ -1119,9 +1120,7 @@ case 'igreels':
 	babi = await fetchJson(`https://api.xteam.xyz/dl/fbv2?url=${q}&APIKEY=483b65681fe3dfb7`)
 	babo = babi.result
 	teksnyi = `Source : ${babo.meta.source}\nDuration : ${babo.meta.duration}\n\n _Tunggu sebentar, media sedang dikirim_`
-	ftny = await getBuffer(babo.thumb)
 	vidnya = await getBuffer(babo.hd.url)
-	zeroyt7.sendMessage(from, ftny, image, { caption : teksnyi })
 	zeroyt7.sendMessage(from, vidnya, video, { quoted : ftrol })
 	break
 case 'fb2':
@@ -1136,9 +1135,7 @@ case 'ytshort':
     ehm = await fetchJson(`https://api-xcoders.xyz/api/download/ytshort?url=${q}&apikey=cyXNcMnw3x`)
     ehe = ehm.result
     ttex = `*>* Judul : ${ehe.title}\n*>* Durasi : ${ehe.duration}\n*>* Size : ${ehe.size}\n\n_Tunggu sebentar, media sedang dikirim_`
-    imge = await getBuffer(ehe.thumbnail)
     urr = await getBuffer(ehe.url)
-    zeroyt7.sendMessage(from, imge, image, { caption : ttstalk })
     reply(mess.wait)
     zeroyt7.sendMessage(from, urr, video, { quoted: ftrol })
     break
@@ -1147,11 +1144,9 @@ case 'twitvideo':
     if (argan.length < 1) return reply('Link?')
     ttw = await fetchJson(`https://api-xcoders.xyz/api/download/twitter?url=${q}&apikey=cyXNcMnw3x`)
     tww = ttw.result.desc
-    buh = await getBuffer(ttw.result.thumb)
     bww = await getBuffer(tww.result.SD)
-    zeroyt7.sendMessage(from, buh, image, { caption : tww })
     reply(mess.wait)
-    zeroyt7.sendButton(from, bww, video, { quoted : ftrol })
+    zeroyt7.sendMessage(from, bww, video, { quoted : ftrol })
     break
 
 //━━━━━━━━━━━━━━━[ FITUR STALKER ]━━━━━━━━━━━━━━━━//
@@ -1184,7 +1179,9 @@ case 'storyig':
     r = storyny.result
     typeny = r.type
     b = await getBuffer(r.url)
+    if (typeny == 'video')
     zeroyt7.sendMessage(from, b, video, {quoted:mek})
+    if (typeny == 'image')
     zeroyt7.sendMessage(from, b, image, {quoted:mek})
     break
     
@@ -1199,7 +1196,7 @@ inilist.push({
 "vcard": 'BEGIN:VCARD\n'
 + 'VERSION:3.0\n'
 + `FN:${ownername}\n`
-+ `ORG: Creator ${botname}} ;\n`
++ `ORG: Creator ${botname} ;\n`
 + `TEL;type=CELL;type=VOICE;waid=${owner}:${owner}\n`
 + 'END:VCARD'.trim()
 })
@@ -1226,7 +1223,7 @@ if (!isOwner) return reply('LU BUKAN OWNER GBLOK')
 if (args.length < 1) return reply('Teksnya?')
 anu = await zeroyt7.chats.all()
 for (let _ of anu) {
-buttonss = [{buttonId: `${prefix}menu`, buttonText: {displayText: '☰ MENU'}, type: 1},{buttonId: `${prefix}sewabot`, buttonText: {displayText: '☰ SEWA BOT'}, type: 1}]
+buttonss = [{buttonId: `${prefix}menu`, buttonText: {displayText: '☰ MENU'}, type: 1},{buttonId: `${prefix}infobot`, buttonText: {displayText: '☰ INFO BOT'}, type: 1}]
 const btnbc = {
 contentText: `${q}`,
 footerText: '*SILAHKAN TEKAN BUTTON UNTUK INFORMASI LANJUT*',
@@ -1263,7 +1260,7 @@ break
 case 'tt':
 teks =
 `Nih Tiktok Creator Ku Jangan Lupa Di Follow Ya https://tiktok.com/@_zeroyt7
-Yang Ini Tiktok Owner Ku Jangan Lupa Di Follow Ya https://tiktok.com/@ekuzika`
+Yang Ini Tiktok Owner Ku Jangan Lupa Di Follow Ya https://tiktok.com/@exzuka_81`
 zeroyt7.sendMessage(from, teks, text, {quoted: ftrol})
 break
 case 'sourcecode':
